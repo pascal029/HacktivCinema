@@ -1,0 +1,55 @@
+html{
+    height: 100%;
+}
+body {
+    background-image: url(background-image.jpeg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    min-height : 100%;
+    margin : 0;
+    display: grid
+}
+#list{
+    text-align: center;
+}
+
+
+.card-img {
+    height: 200px;
+    max-width: 300px;
+}
+
+.promo {
+    background-color: grey;
+    height: 50px;
+}
+
+#banner-promo{
+    text-align: center;
+    margin-left: 100px;
+}
+
+#logo {
+    height: 20px
+}
+
+#navbar2 {
+    margin-top: -10px;
+}
+
+button{
+    justify-content: center;
+}
+
+footer{
+    margin-top: auto;
+}
+
+.carousel-inner .carousel-item img {
+    margin: auto;
+}
+
+.carousel-inner .carousel-item.active img{
+    margin: auto;
+}
