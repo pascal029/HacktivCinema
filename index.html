@@ -56,6 +56,64 @@
       </button>
     </div>
 
+
+    <div class="alert p-2 ml-6 mr-6 alert-primary text-center" role="alert" id="alert-insert-data" hidden>
+      Berhasil menambahkan film! Selesaikan pembayaran melalui invoice yang telah dikirim ke email kamu ya ! :)
+   </div>
+
+    <table class="table" id="table-appointment" hidden>
+      <thead>
+      <tr>
+          <th scope="col">Nama film</th>
+          <th scope="col">Durasi Tonton Film</th>
+          <th scope="col">Nama Lengkap</th>
+          <th scope="col">Email</th>
+          <th scope="col">Cancel</th>
+      </tr>
+      </thead>
+      <tbody id="tbody">
+      </tbody>
+  </table>
+  
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Data Pembeli</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label class="form-label">Nama Film</label>
+                    <input type="text" class="form-control" id="form-nama-film" value="" readonly>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Durasi tonton Film</label>
+                    <input type="Number" class="form-control" placeholder="Masukkan Durasi pembelian" id="form-durasi">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Nama Lengkap</label>
+                    <input type="text" class="form-control" placeholder="Masukkan nama lengkap" id="form-nama">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <input type="text" class="form-control" placeholder="Masukkan email" id="form-email">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                    Close
+                </button>
+                <button type="button" class="btn btn-outline-primary" id="save" data-bs-dismiss="modal">Save
+                    changes
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+  
     <br><br>
     <h1 id="list">FILM LISTS</h1>
 
@@ -74,7 +132,7 @@
                   <span class="text-light">Rp 77</span>
                 </div>
                 <div class="col-sm-6">
-                  <button id="Darah garuda" onClick="reply_click(this.id)" type="button" class="btn btn-light mx-auto d-block">Checkout</button>
+                  <button id="Darah garuda" onClick="reply_click(this.id)" type="button" class="btn btn-light mx-auto d-block" data-bs-toggle="modal" data-bs-target="#exampleModal">Checkout</button>
                 </div>
               </div>
             </div>
@@ -390,6 +448,7 @@
     </div>
     
     <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="index.js"></script>
     <!-- End of .container -->
 
     <!-- Option 2: Separate Popper and Bootstrap JS -->
