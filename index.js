@@ -1,5 +1,7 @@
 const btnSave = document.getElementById('save')
-const tableAppointment = document.getElementById('table-appointment')
+const tablepembelian = document.getElementById('table-pembelian')
+const riwayat = document.getElementById('riwayat')
+const containertable = document.getElementById('containertable')
 
 function reply_click(clicked_id)
 {
@@ -13,18 +15,31 @@ btnSave.onclick = function () {
     setTimeout(function () {
         alertInsertEL.hidden = true;
     }, 2500);
-    tableAppointment.hidden = false;
+    tablepembelian.hidden = false;
+    riwayat.hidden = false;
+    containertable.hidden = false;
     fillForm();
     renderTableData();
 }
 
 output = []
 
+function renderTableData() {
+    const tbody = document.getElementById('tbody');
+    if (tbody.children.length > 0) {
+        tbody.innerHTML = '';
+    }
+    for (let i = 0; i < output.length; i++) {
+        const {film, durasi, nama, email} = output[i];
+        fillTable(film, durasi, nama, email);
+    }
+}
+
 function fillForm(){
-    const film = document.getElementById("form-nama-film");
-    const durasi = document.getElementById("form-durasi")
-    const nama = document.getElementById("form-nama")
-    const email = document.getElementById("form-email")
+    const film = document.getElementById("form-nama-film").value;
+    const durasi = document.getElementById("form-durasi").value
+    const nama = document.getElementById("form-nama").value
+    const email = document.getElementById("form-email").value
     output.push({
         film,
         durasi,
@@ -32,6 +47,8 @@ function fillForm(){
         email
     })
 }
+
+
 
 function fillTable(film,durasi,nama,email){
     const tr = document.createElement('tr')
@@ -43,7 +60,22 @@ function fillTable(film,durasi,nama,email){
 
     const btnDelete = document.createElement('button');
     btnDelete.className = "btn btn-outline-danger";
-    btnDelete.style = "margin-right: 5px;";
+    btnDelete.style = "margin-right: 50px;";
+    btnDelete.innerText = "Delete"
+    btnDelete.onclick = function () {
+        if (tbody.children.length === 1) {
+            tablepembelian.hidden = true;
+            riwayat.hidden = true
+        }
+        tr.remove();
+        for (let i = 0; i < output.length; i++) {
+            if (output[i].idx === idx) {
+                output.splice(i, 1);
+            }
+        }
+
+    }
+
     
 
     cancel.appendChild(btnDelete)
@@ -57,19 +89,10 @@ function fillTable(film,durasi,nama,email){
     tr.appendChild(durasi1)
     tr.appendChild(nama1)
     tr.appendChild(email1)
+    tr.appendChild(cancel)
     const tbody = document.getElementById('tbody')
     tbody.appendChild(tr)
 }
 
 
 
-function renderTableData() {
-    const tbody = document.getElementById('tbody');
-    if (tbody.children.length > 0) {
-        tbody.innerHTML = '';
-    }
-    for (let i = 0; i < output.length; i++) {
-        const {film, durasi, nama, email} = output[i];
-        fillTable(film, durasi, nama, email);
-    }
-}
